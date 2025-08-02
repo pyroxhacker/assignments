@@ -1,9 +1,21 @@
-#include<stdio.h>
+
+ #include<stdio.h>
 int main(){
-    int n = 6;
-  int arr[7] = {44, 55, 66, 77, 88, 99, 0};
+    int n;
+   printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];  
+    
+ printf("Enter %d numbers :\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
   int i, j, ele;
-  ele = 100;
+  printf("enter your value ") ;
+  scanf("%d",&ele);
+  
+  
   arr[n] = ele;
   printf("before insertion:\n");
   for (i = 0; i < n; i++)
@@ -11,6 +23,8 @@ int main(){
     printf("%d ", arr[i]);
    
   }
+  
+  
   printf("\n");
   printf("after insertion: \n");
   for (j = 0; j <= n; j++)
@@ -21,3 +35,4 @@ int main(){
   }
   return 0;
 }
+
