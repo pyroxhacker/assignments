@@ -1,44 +1,30 @@
-def spirallyTraverse(mat):
-    m, n = len(mat), len(mat[0])
+# Function to rotate the matrix by 90 degrees clockwise
+def rotate90(mat):
+    n = len(mat)
 
-    res = []
+    # Initialize the result matrix with zeros
+    res = [[0] * n for _ in range(n)]
 
-    # Initialize boundaries
-    top, bottom, left, right = 0, m - 1, 0, n - 1
+    # Flip the matrix clockwise using nested loops
+    for i in range(n):
+        for j in range(n):
+            res[j][n - i - 1] = mat[i][j]
 
-    # Iterate until all elements are printed
-    while top <= bottom and left <= right:
-
-        # Print top row from left to right
-        for i in range(left, right + 1):
-            res.append(mat[top][i])
-        top += 1
-
-        # Print right column from top to bottom
-        for i in range(top, bottom + 1):
-            res.append(mat[i][right])
-        right -= 1
-
-        # Print bottom row from right to left (if exists)
-        if top <= bottom:
-            for i in range(right, left - 1, -1):
-                res.append(mat[bottom][i])
-            bottom -= 1
-
-        # Print left column from bottom to top (if exists)
-        if left <= right:
-            for i in range(bottom, top - 1, -1):
-                res.append(mat[i][left])
-            left += 1
-
-    return res
+    # Update the original matrix with the result
+    for i in range(n):
+        for j in range(n):
+            mat[i][j] = res[i][j]
 
 
-if __name__ == "__main__":
-    mat = [[1, 2, 3, 4], 
-           [5, 6, 7, 8], 
-           [9, 10, 11, 12], 
-           [13, 14, 15, 16]]
+mat = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+]
 
-    res = spirallyTraverse(mat)
-    print(" ".join(map(str, res)))
+rotate90(mat)
+
+# Print the rotated matrix
+for row in mat:
+    print(" ".join(map(str, row)))
